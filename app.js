@@ -48,9 +48,9 @@ var domain = '46.101.234.141';
 var port = process.env.PORT || 8080;
 
 // Set and display the application URL
-var applicationUrl = 'http://' + domain + ':' + port;
+var applicationUrl = domain +':'+ port;
 console.log(applicationUrl);
-console.log('snapJob API running on ' + applicationUrl);
+console.log('Hayda API running on ' + applicationUrl);
 
 swagger.configure(applicationUrl, '1.0.0');
 
