@@ -1,0 +1,11 @@
+{
+    "name": "snapJobAPI",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "*",
+        "swagger-node-express": "*",
+        "minimist":"*",
+        "winston-logstash":"*",
+        "mysql":"^2.5.4"
+    }
+}
