@@ -42,7 +42,7 @@ app.get('/', function (req, res) {
 swagger.configureSwaggerPaths('', 'api-docs', '');
 
 // Configure the API domain
-var domain = '104.155.7.174';
+var domain = '146.148.112.61';
 
 // Configure the API port
 var port = process.env.PORT || 8080;
