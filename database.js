@@ -4,9 +4,9 @@
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-    host     : "eu-cdbr-azure-west-c.cloudapp.net",
-    user     : "b95d9857c908ae",
-    password : "551917e7",
+    host     : "10.240.0.2",
+    user     : "root",
+    password : "QU6vfNpx",
     database : 'haydadb'
 });
 
