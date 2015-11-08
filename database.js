@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     host     : "10.240.0.2",
     user     : "root",
     password : "QU6vfNpx",
-    database : 'haydadb'
+    database : 'mysql'
 });
 
 connection.connect(function(err) {
