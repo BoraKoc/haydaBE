@@ -8,7 +8,7 @@ var sw = require("swagger-node-express");
 exports.createMessage = {
     'spec': {
         description : "Create a new message",
-        path : "api/createMessage/{userId}/{text}/{lati}/{long}",
+        path : "/api/createMessage/{userId}/{text}/{lati}/{long}",
         method: "POST",
         summary : "Create a new message",
         type : "void",
@@ -50,6 +50,34 @@ exports.listMessageByUser = {
     },
     'action': function (req, res) {
         dbConnection.query('select * from haydadb.messages where username = ?', req.params.username, function(err, rows, fields) {
+            if (!err)
+                res.json(rows);
+            else
+                res.json('Error while performing Query.');
+        });
+    }
+};
+
+exports.listMessageByRadius = {
+    'spec': {
+        description : "List Messages By Radius From Center Point ",
+        path : "/api/listMessages/{latitude}/{longitude}/{distance}",
+        method: "GET",
+        summary : "List Messages By Radius",
+        type : "void",
+        nickname : "listMessageByRadius",
+        produces : ["application/json"],
+        parameters : [
+            sw.pathParam("latitude", "Center point latitude", "float"),
+            sw.pathParam("longitude", "Center point longitude", "float"),
+            sw.pathParam("distance", "Scan Area", "float")
+        ]
+    },
+    'action': function (req, res) {
+        dbConnection.query('  SET @p1 = ' + req.params.latitude +
+                           '; SET @p2 = ' + req.params.longitude +
+                           '; SET @p3 = ' + req.params.distance +
+                           '; CALL Get_Distance( @p1, @p2, @p3)', function(err, rows, fields){
             if (!err)
                 res.json(rows);
             else

@@ -33,10 +33,7 @@ app.all('/*', function(req, res, next) {
 });
 
 // Auth Middleware - This will check if the token is valid
-// Only the requests that start with /api/v1/* will be checked for the token.
-// Any URL's that do not follow the below pattern should be avoided unless you 
-// are sure that authentication is not needed
-app.all('/api/*', [require('./middlewares/validateRequest')]);
+//app.all('/api/*', [require('./middlewares/validateRequest')]);
 
 // If no route is matched by now, it must be a 404
 /*app.use(function(req, res, next) {
@@ -58,6 +55,7 @@ swagger.addModels(models).addPOST(users.createUser);
 swagger.addModels(models).addGET(version.getVersionInfo);
 swagger.addModels(models).addPOST(messages.createMessage);
 swagger.addModels(models).addPOST(messages.listMessageByUser);
+swagger.addModels(models).addGET(messages.listMessageByRadius);
 
 // set api info
 swagger.setApiInfo({

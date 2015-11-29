@@ -8,7 +8,7 @@ var sw = require("swagger-node-express");
 exports.createUser = {
   'spec': {
     description : "Create a new user",
-    path : "api/createUser/{nickname}/{source}/{email}",
+    path : "/createUser/{nickname}/{password}/{email}",
     method: "POST",
     summary : "Create a new user",
     type : "void",
@@ -16,13 +16,13 @@ exports.createUser = {
     produces : ["application/json"],
     parameters : [
       sw.pathParam("nickname", "User nickname", "string"),
-      sw.pathParam("source", "Source of new user", "string"),
+      sw.pathParam("password", "User password", "string"),
       sw.pathParam("email", "User email", "string")
     ]
 
   },
   'action': function (req, res) {
-    var values  = {nickname: req.params.nickname, source: req.params.source, email: req.params.email};
+    var values  = {nickname: req.params.nickname, source: "application", password: req.params.password, email: req.params.email};
     var query = dbConnection.query('insert into haydadb.users SET ?',values, function(err, rows, fields) {
       if (!err)
         res.json(rows);

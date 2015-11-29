@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
     host : "104.155.69.200",
     user     : "root",
     password : "QU6vfNpx",
-    database : 'mysql'
+    database : 'mysql',
+    multipleStatements: true
 });
 
 connection.prototype = Object.prototype;
