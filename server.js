@@ -71,8 +71,8 @@ swagger.setApiInfo({
 swagger.configureSwaggerPaths('', 'api-docs', '');
 
 // Configure the API domain
-//var domain = '146.148.112.61';
-var domain = 'localhost';
+var domain = '146.148.112.61';
+//var domain = 'localhost';
 var port = process.env.PORT || 8080;
 var applicationUrl = domain +':'+ port;
 
