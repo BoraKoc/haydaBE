@@ -74,10 +74,7 @@ exports.listMessageByRadius = {
         ]
     },
     'action': function (req, res) {
-        dbConnection.query('  SET @p1 = ' + req.params.latitude +
-                           '; SET @p2 = ' + req.params.longitude +
-                           '; SET @p3 = ' + req.params.distance +
-                           '; CALL Get_Distance( @p1, @p2, @p3)', function(err, rows, fields){
+        dbConnection.query( 'CALL haydadb.Get_Message_By_Distance('+req.params.longitude+','+ req.params.latitude+','+req.params.distance+');', function(err, rows, fields){
             if (!err)
                 res.json(rows);
             else
